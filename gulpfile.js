@@ -1,4 +1,4 @@
-const { src, dest, series, parallel } = require('gulp');
+const { watch, src, dest, series, parallel } = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
@@ -8,5 +8,7 @@ function styles() {
     .pipe(autoprefixer())
     .pipe(dest('./dist/css'))
 }
+
+watch('./src/sass/**/*.scss', styles)
 
 exports.styles = styles;
