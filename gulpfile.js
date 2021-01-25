@@ -1,1 +1,1 @@
-const { series, parallel } = require('gulp');
+const { src, dest, series, parallel } = require('gulp');
