@@ -1,4 +1,4 @@
-const gulp = require('gulp');
+const { series, parallel } = require('gulp');
 
 function printName(cb) {
   console.log('My name is Joe');
@@ -11,3 +11,4 @@ function printAge(cb) {
 }
 
 exports.printName = printName;
+exports.build = series(printName, printAge);
