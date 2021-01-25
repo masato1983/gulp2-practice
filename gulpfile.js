@@ -5,4 +5,9 @@ function printName(cb) {
   cb();
 }
 
+function printAge(cb) {
+  console.log('I am 30 years old');
+  cb();
+}
+
 exports.printName = printName;
