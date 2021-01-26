@@ -18,4 +18,4 @@ function serve() {
 
 watch('./src/sass/**/*.scss', styles)
 
-exports.styles = styles;
+exports.serve = serve;
