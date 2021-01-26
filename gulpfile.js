@@ -3,14 +3,17 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const cleanCSS = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps');
 
 function styles() {
   return src('./src/sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(cleanCSS({
-      format: 'beautify'
-    }))
+    .pipe(sourcemaps.init())
+      .pipe(sass().on('error', sass.logError))
+      .pipe(autoprefixer())
+      .pipe(cleanCSS({
+        format: 'beautify'
+      }))
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('./dist/css'))
     .pipe(browserSync.stream())
 }
