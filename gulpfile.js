@@ -8,6 +8,8 @@ function styles() {
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(dest('./dist/css'))
+    .pipe(browserSync.stream())
+}
 
 function serve() {
   browserSync.init({
