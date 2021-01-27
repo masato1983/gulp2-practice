@@ -44,4 +44,4 @@ watch('./src/sass/**/*.scss', styles)
 watch('./src/js/**/*.js', webpack)
 
 exports.dev = series(parallel(styles, webpack), serve);
-exports.minifycss = minifycss;
+exports.prod = minifycss;
