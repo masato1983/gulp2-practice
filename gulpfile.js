@@ -43,6 +43,5 @@ function minifycss() {
 watch('./src/sass/**/*.scss', styles)
 watch('./src/js/**/*.js', webpack)
 
-exports.serve = serve;
-exports.webpack = webpack;
+exports.dev = series(parallel(styles, webpack), serve);
 exports.minifycss = minifycss;
