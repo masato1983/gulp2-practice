@@ -1,0 +1,15 @@
+extends ../templates/template.pug
+include ../mixins/link.pug
+include ../mixins/list.pug
+
+block append header
+  h2 subtitle
+
+block main
+  each name in names
+    p= name
+  +link('/public/about.html', 'about')
+  ul
+    +list(names)
+
+block footer
