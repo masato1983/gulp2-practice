@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
+const shell = require('gulp-shell')
 
 function styles() {
   return src('./src/sass/**/*.scss')
@@ -15,6 +16,14 @@ function styles() {
       }))
     .pipe(sourcemaps.write('.'))
     .pipe(dest('./dist/css'))
+    .pipe(browserSync.stream())
+}
+
+function webpack() {
+  return src('./src/js/**/*.js', {read: false})
+    .pipe(shell([
+      'webpack'
+    ]))
     .pipe(browserSync.stream())
 }
 
@@ -32,6 +41,8 @@ function minifycss() {
 }
 
 watch('./src/sass/**/*.scss', styles)
+watch('./src/js/**/*.js', webpack)
 
 exports.serve = serve;
+exports.webpack = webpack;
 exports.minifycss = minifycss;
